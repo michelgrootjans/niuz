@@ -8,24 +8,19 @@ using Xunit;
 
 namespace niuz.application.services
 {
-    public class TeaserServiceTest
+  public class TeaserServiceTest : BaseTest
+  {
+    [Fact]
+    public void GetHomepage()
     {
-        private readonly ITeaserRepository teasers;
-        private readonly TeaserService teaserService;
+      var teaserService = Get<TeaserService>();
 
-        public TeaserServiceTest()
-        {
-            teasers = Substitute.For<ITeaserRepository>();
-            teaserService = new TeaserService(teasers);
-        }
-        
-        [Fact]
-        public void GetHomepage()
-        {
-            teasers.GetByPage("homepage").Returns(new List<Teaser> {new Teaser("headline", "Freddy Kruger")});
-            teaserService.Get("homepage").Should().ContainInOrder(
-                new TeaserDto("headline", "Freddy Kruger")
-            );
-        }
+      teasers.GetByPage("homepage").Returns(new List<Teaser> {new Teaser("headline", "Freddy Kruger")});
+
+      teaserService.Get("homepage").Should().ContainInOrder(
+        new TeaserDto("headline", "Freddy Kruger")
+      );
+
     }
+  }
 }
