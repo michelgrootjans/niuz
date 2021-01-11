@@ -6,11 +6,13 @@ public class Author {
     private final String id;
     private final String name;
     private final String bankAccount;
+    private final String contractType;
 
-    public Author(String id, String name, String bankAccount) {
+    public Author(String id, String name, String bankAccount, String contractType) {
         this.id = id;
         this.name = name;
         this.bankAccount = bankAccount;
+        this.contractType = contractType;
     }
 
     public String getId() {
@@ -45,5 +47,13 @@ public class Author {
     @Override
     public int hashCode() {
         return Objects.hash(getId());
+    }
+
+    public boolean paysBySubmission() {
+        return "pay-by-submission".equals(contractType);
+    }
+
+    public boolean paysByPublication() {
+        return "pay-by-publication".equals(contractType);
     }
 }

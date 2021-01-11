@@ -5,27 +5,30 @@ namespace niuz.application.services
 {
     public class PublishingService
     {
-        private readonly IArticleRepository articles;
         private readonly IAuthorRepository authors;
+        private readonly IArticleRepository articles;
         private readonly ITeaserRepository teasers;
+
         private readonly IPaymentRepository payments;
 
-        public PublishingService(IArticleRepository articles, IAuthorRepository authors, ITeaserRepository teasers,
-            IPaymentRepository payments)
+        public PublishingService(IAuthorRepository authors, IArticleRepository articles, ITeaserRepository teasers, IPaymentRepository payments)
         {
-            this.articles = articles;
             this.authors = authors;
+            this.articles = articles;
             this.teasers = teasers;
             this.payments = payments;
         }
 
-        public void PublishArticleById(string articleId)
+        public void Publish(string articleId)
         {
             var article = articles.GetByArticleId(articleId);
             var author = authors.GetByAuthorId(article.AuthorId);
 
             teasers.Save("homepage", new Teaser(article.Headline, author.Name));
-            payments.Save(new Payment(100, author.BankAccount, author.Name, article.Headline));
+            if (author.PaysByPublication)
+            {
+                payments.Save(new Payment(100, author.BankAccount, author.Name, article.Headline));    
+            }
         }
     }
 }

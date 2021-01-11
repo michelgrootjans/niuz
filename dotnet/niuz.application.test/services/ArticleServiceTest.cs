@@ -7,20 +7,39 @@ namespace niuz.application.services
 {
     public class ArticleServiceTest
     {
+        private readonly IAuthorRepository authors;
         private readonly IArticleRepository articles;
+        private readonly IPaymentRepository payments;
         private readonly ArticleService articleService;
 
         public ArticleServiceTest()
         {
+            authors = Substitute.For<IAuthorRepository>();
             articles = Substitute.For<IArticleRepository>();
-            articleService = new ArticleService(articles);
+            payments = Substitute.For<IPaymentRepository>();
+            articleService = new ArticleService(authors, articles, payments);
         }
 
         [Fact]
-        public void SubmitArticle()
+        public void SubmitArticleAndPay()
         {
-            articleService.Save("article-1", "author-1", "headline");
+            authors.GetByAuthorId("author-1").Returns(new Author("author-1", "Freddy Kruger", "123-4567-89", "pay-by-submission"));
+
+            articleService.Submit("article-1", "author-1", "headline");
+            
             articles.Received().Save(new Article("article-1", "author-1", "headline"));
+            payments.Received().Save(new Payment(50, "123-4567-89", "Freddy Kruger", "headline"));
+        }
+
+        [Fact]
+        public void SubmitArticleWithoutPay()
+        {
+            authors.GetByAuthorId("author-1").Returns(new Author("author-1", "Freddy Kruger", "123-4567-89", "pay-by-publication"));
+
+            articleService.Submit("article-1", "author-1", "headline");
+            
+            articles.Received().Save(new Article("article-1", "author-1", "headline"));
+            payments.DidNotReceive().Save(Arg.Any<Payment>());
         }
     }
 }

@@ -19,8 +19,8 @@ namespace niuz.application.services
         [Fact]
         public void HireAuthor()
         {
-            authorService.Save("author-1", "Freddy Kruger", "123-4567-89");
-            authors.Received().Save(new Author("author-1", "Freddy Kruger", "123-4567-89"));
+            authorService.Hire("author-1", "Freddy Kruger", "123-4567-89", "pay-by-publication");
+            authors.Received().Save(new Author("author-1", "Freddy Kruger", "123-4567-89", "pay-by-publication"));
         }
     }
 }

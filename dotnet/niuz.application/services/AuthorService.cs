@@ -12,9 +12,9 @@ namespace niuz.application.services
             this.authors = authors;
         }
 
-        public void Save(string authorId, string authorName, string bankAccount)
+        public void Hire(string authorId, string authorName, string bankAccount, string contractType)
         {
-            authors.Save(new Author(authorId, authorName, bankAccount));
+            authors.Save(new Author(authorId, authorName, bankAccount, contractType));
         }
     }
 }

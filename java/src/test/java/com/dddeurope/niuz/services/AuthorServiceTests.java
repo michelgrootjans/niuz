@@ -20,7 +20,7 @@ public class AuthorServiceTests {
 
     @Test
     void hireAuthor() {
-        authorService.save("author-1", "Freddy Kruger", "123-4567-89");
-        verify(authors).save(new Author("author-1", "Freddy Kruger", "123-4567-89"));
+        authorService.hire("author-1", "Freddy Kruger", "123-4567-89", "pay-by-submission");
+        verify(authors).save(new Author("author-1", "Freddy Kruger", "123-4567-89", "pay-by-submission"));
     }
 }

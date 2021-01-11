@@ -19,16 +19,28 @@ namespace niuz.application.services
             articles = Substitute.For<IArticleRepository>();
             teasers = Substitute.For<ITeaserRepository>();
             payments = Substitute.For<IPaymentRepository>();
-            publishingService = new PublishingService(articles, authors, teasers, payments);
+            publishingService = new PublishingService(authors, articles, teasers, payments);
         }
         
         [Fact]
-        public void PublishArticle()
+        public void PublishArticleWithoutPay()
         {
-            authors.GetByAuthorId("author-1").Returns(new Author("author-1", "Freddy Kruger", "123-4567-89"));
+            authors.GetByAuthorId("author-1").Returns(new Author("author-1", "Freddy Kruger", "123-4567-89", "pay-by-submission"));
             articles.GetByArticleId("article-1").Returns(new Article("article-1", "author-1", "headline"));
 
-            publishingService.PublishArticleById("article-1");
+            publishingService.Publish("article-1");
+
+            teasers.Received().Save("homepage", new Teaser("headline", "Freddy Kruger"));
+            payments.DidNotReceive().Save(Arg.Any<Payment>());
+        }
+
+        [Fact]
+        public void PublishArticleAndPay()
+        {
+            authors.GetByAuthorId("author-1").Returns(new Author("author-1", "Freddy Kruger", "123-4567-89", "pay-by-publication"));
+            articles.GetByArticleId("article-1").Returns(new Article("article-1", "author-1", "headline"));
+
+            publishingService.Publish("article-1");
 
             teasers.Received().Save("homepage", new Teaser("headline", "Freddy Kruger"));
             payments.Received().Save(new Payment(100, "123-4567-89", "Freddy Kruger", "headline"));

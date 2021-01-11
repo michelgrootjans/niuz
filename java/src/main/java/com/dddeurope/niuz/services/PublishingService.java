@@ -22,11 +22,13 @@ public class PublishingService {
         this.payments = payments;
     }
 
-    public void publishArticleById(String articleId) {
+    public void publish(String articleId) {
         Article article = articles.getByArticleId(articleId);
         Author author = authors.getByAuthorId(article.getAuthorId());
 
         teasers.save("homepage", new Teaser(article.getHeadline(), author.getName()));
-        payments.save(new Payment(100, author.getBankAccount(), author.getName(), article.getHeadline()));
+        if (author.paysByPublication()) {
+            payments.save(new Payment(100, author.getBankAccount(), author.getName(), article.getHeadline()));
+        }
     }
 }

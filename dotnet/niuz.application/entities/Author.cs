@@ -3,16 +3,19 @@ namespace niuz.application.entities
     public class Author
     {
         private readonly string id;
+        public string Name { get; }
+        public string BankAccount { get; }
+        public string ContractType { get; }
+        public bool PaysBySubmission => ContractType == "pay-by-submission";
+        public bool PaysByPublication => ContractType == "pay-by-publication";
 
-        public Author(string id, string name, string bankAccount)
+        public Author(string id, string name, string bankAccount, string contractType)
         {
             this.id = id;
             Name = name;
             BankAccount = bankAccount;
+            ContractType = contractType;
         }
-
-        public string Name { get; }
-        public string BankAccount { get; }
 
         protected bool Equals(Author other)
         {

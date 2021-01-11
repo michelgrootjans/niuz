@@ -30,11 +30,22 @@ public class PublishingServiceTest {
     }
 
     @Test
-    void publishArticle() {
-        when(authors.getByAuthorId("author-1")).thenReturn(new Author("author-1", "Freddy Kruger", "123-4567-89"));
+    void submitArticleWithoutPay() {
+        when(authors.getByAuthorId("author-1")).thenReturn(new Author("author-1", "Freddy Kruger", "123-4567-89", "pay-by-submission"));
         when(articles.getByArticleId("article-1")).thenReturn(new Article("article-1", "author-1", "headline"));
 
-        publishingService.publishArticleById("article-1");
+        publishingService.publish("article-1");
+
+        verify(teasers).save("homepage", new Teaser("headline", "Freddy Kruger"));
+        verify(payments, never()).save(any());
+    }
+
+    @Test
+    void submitArticleAndPay() {
+        when(authors.getByAuthorId("author-1")).thenReturn(new Author("author-1", "Freddy Kruger", "123-4567-89", "pay-by-publication"));
+        when(articles.getByArticleId("article-1")).thenReturn(new Article("article-1", "author-1", "headline"));
+
+        publishingService.publish("article-1");
 
         verify(teasers).save("homepage", new Teaser("headline", "Freddy Kruger"));
         verify(payments).save(new Payment(100, "123-4567-89", "Freddy Kruger", "headline"));
