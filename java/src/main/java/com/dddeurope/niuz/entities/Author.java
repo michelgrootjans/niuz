@@ -33,7 +33,16 @@ public class Author {
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", bankAccount='" + bankAccount + '\'' +
+                ", contractType='" + contractType + '\'' +
                 '}';
+    }
+
+    public boolean paysBySubmission() {
+        return "pay-by-submission".equals(contractType);
+    }
+
+    public boolean paysByPublication() {
+        return "pay-by-publication".equals(contractType);
     }
 
     @Override
@@ -47,13 +56,5 @@ public class Author {
     @Override
     public int hashCode() {
         return Objects.hash(getId());
-    }
-
-    public boolean paysBySubmission() {
-        return "pay-by-submission".equals(contractType);
-    }
-
-    public boolean paysByPublication() {
-        return "pay-by-publication".equals(contractType);
     }
 }
