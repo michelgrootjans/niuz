@@ -27,6 +27,14 @@ public class Author {
         return bankAccount;
     }
 
+    public boolean paysBySubmission() {
+        return "pay-by-submission".equals(contractType);
+    }
+
+    public boolean paysByPublication() {
+        return "pay-by-publication".equals(contractType);
+    }
+
     @Override
     public String toString() {
         return "Author{" +
@@ -35,14 +43,6 @@ public class Author {
                 ", bankAccount='" + bankAccount + '\'' +
                 ", contractType='" + contractType + '\'' +
                 '}';
-    }
-
-    public boolean paysBySubmission() {
-        return "pay-by-submission".equals(contractType);
-    }
-
-    public boolean paysByPublication() {
-        return "pay-by-publication".equals(contractType);
     }
 
     @Override
