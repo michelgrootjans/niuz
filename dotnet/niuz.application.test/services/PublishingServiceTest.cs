@@ -25,7 +25,7 @@ namespace niuz.application.services
         [Fact]
         public void PublishArticleWithoutPay()
         {
-            authors.GetByAuthorId("author-1").Returns(new Author("author-1", "Freddy Kruger", "123-4567-89", "pay-by-submission"));
+            authors.GetByAuthorId("author-1").Returns(new Author("author-1", "Freddy Kruger", "123-4567-89", "pay-by-submission", 50));
             articles.GetByArticleId("article-1").Returns(new Article("article-1", "author-1", "headline"));
 
             publishingService.Publish("article-1");
@@ -37,7 +37,7 @@ namespace niuz.application.services
         [Fact]
         public void PublishArticleAndPay()
         {
-            authors.GetByAuthorId("author-1").Returns(new Author("author-1", "Freddy Kruger", "123-4567-89", "pay-by-publication"));
+            authors.GetByAuthorId("author-1").Returns(new Author("author-1", "Freddy Kruger", "123-4567-89", "pay-by-publication", 100));
             articles.GetByArticleId("article-1").Returns(new Article("article-1", "author-1", "headline"));
 
             publishingService.Publish("article-1");

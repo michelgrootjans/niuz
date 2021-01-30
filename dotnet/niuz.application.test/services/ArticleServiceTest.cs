@@ -23,7 +23,7 @@ namespace niuz.application.services
         [Fact]
         public void SubmitArticleAndPay()
         {
-            authors.GetByAuthorId("author-1").Returns(new Author("author-1", "Freddy Kruger", "123-4567-89", "pay-by-submission"));
+            authors.GetByAuthorId("author-1").Returns(new Author("author-1", "Freddy Kruger", "123-4567-89", "pay-by-submission", 50));
 
             articleService.Submit("article-1", "author-1", "headline");
             
@@ -34,7 +34,7 @@ namespace niuz.application.services
         [Fact]
         public void SubmitArticleWithoutPay()
         {
-            authors.GetByAuthorId("author-1").Returns(new Author("author-1", "Freddy Kruger", "123-4567-89", "pay-by-publication"));
+            authors.GetByAuthorId("author-1").Returns(new Author("author-1", "Freddy Kruger", "123-4567-89", "pay-by-publication", 100));
 
             articleService.Submit("article-1", "author-1", "headline");
             

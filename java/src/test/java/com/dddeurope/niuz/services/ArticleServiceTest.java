@@ -27,7 +27,7 @@ public class ArticleServiceTest {
 
     @Test
     void submitArticleAndPay() {
-        when(authors.getByAuthorId("author-1")).thenReturn(new Author("author-1", "Freddy Kruger", "123-4567-89", "pay-by-submission"));
+        when(authors.getByAuthorId("author-1")).thenReturn(new Author("author-1", "Freddy Kruger", "123-4567-89", "pay-by-submission", 50));
 
         articleService.submit("article-1", "author-1", "headline");
 
@@ -37,7 +37,7 @@ public class ArticleServiceTest {
 
     @Test
     void submitArticleWithoutPay() {
-        when(authors.getByAuthorId("author-1")).thenReturn(new Author("author-1", "Freddy Kruger", "123-4567-89", "pay-by-publication"));
+        when(authors.getByAuthorId("author-1")).thenReturn(new Author("author-1", "Freddy Kruger", "123-4567-89", "pay-by-publication", 100));
 
         articleService.submit("article-1", "author-1", "headline");
 

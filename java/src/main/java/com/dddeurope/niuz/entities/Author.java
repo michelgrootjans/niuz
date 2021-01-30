@@ -7,12 +7,14 @@ public class Author {
     private final String name;
     private final String bankAccount;
     private final String contractType;
+    private final int rate;
 
-    public Author(String id, String name, String bankAccount, String contractType) {
+    public Author(String id, String name, String bankAccount, String contractType, int rate) {
         this.id = id;
         this.name = name;
         this.bankAccount = bankAccount;
         this.contractType = contractType;
+        this.rate = rate;
     }
 
     public String getId() {
@@ -25,6 +27,10 @@ public class Author {
 
     public String getBankAccount() {
         return bankAccount;
+    }
+
+    public int getRate() {
+        return rate;
     }
 
     public boolean paysBySubmission() {

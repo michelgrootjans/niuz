@@ -27,7 +27,7 @@ namespace niuz.application.services
             teasers.Save("homepage", new Teaser(article.Headline, author.Name));
             if (author.PaysByPublication)
             {
-                payments.Save(new Payment(100, author.BankAccount, author.Name, article.Headline));    
+                payments.Save(new Payment(author.Rate, author.BankAccount, author.Name, article.Headline));    
             }
         }
     }

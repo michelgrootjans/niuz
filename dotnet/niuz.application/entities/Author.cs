@@ -6,15 +6,18 @@ namespace niuz.application.entities
         public string Name { get; }
         public string BankAccount { get; }
         public string ContractType { get; }
+        public int Rate { get; }
         public bool PaysBySubmission => ContractType == "pay-by-submission";
         public bool PaysByPublication => ContractType == "pay-by-publication";
 
-        public Author(string id, string name, string bankAccount, string contractType)
+
+        public Author(string id, string name, string bankAccount, string contractType, int rate)
         {
             this.id = id;
             Name = name;
             BankAccount = bankAccount;
             ContractType = contractType;
+            Rate = rate;
         }
 
         protected bool Equals(Author other)

@@ -11,7 +11,7 @@ public class AuthorService {
         this.authors = authors;
     }
 
-    public void hire(String authorId, String authorName, String bankAccount, String contractType) {
-        authors.save(new Author(authorId, authorName, bankAccount, contractType));
+    public void hire(String authorId, String authorName, String bankAccount, String contractType, int rate) {
+        authors.save(new Author(authorId, authorName, bankAccount, contractType, rate));
     }
 }

@@ -23,7 +23,7 @@ public class ArticleService {
 
         Author author = authors.getByAuthorId(authorId);
         if (author.paysBySubmission()) {
-            payments.save(new Payment(50, author.getBankAccount(), author.getName(), headline));
+            payments.save(new Payment(author.getRate(), author.getBankAccount(), author.getName(), headline));
         }
     }
 }

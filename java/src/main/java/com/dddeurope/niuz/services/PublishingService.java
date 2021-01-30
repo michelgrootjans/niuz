@@ -28,7 +28,7 @@ public class PublishingService {
 
         teasers.save("homepage", new Teaser(article.getHeadline(), author.getName()));
         if (author.paysByPublication()) {
-            payments.save(new Payment(100, author.getBankAccount(), author.getName(), article.getHeadline()));
+            payments.save(new Payment(author.getRate(), author.getBankAccount(), author.getName(), article.getHeadline()));
         }
     }
 }
