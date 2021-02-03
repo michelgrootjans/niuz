@@ -23,7 +23,7 @@ namespace niuz.application.fixtures
 
             authorService = new AuthorService(authors);
             articleService = new ArticleService(authors, articles, payments);
-            publishingService = new PublishingService(authors, articles, teasers, payments, eventBus);
+            publishingService = new PublishingService(authors, articles, payments, eventBus);
             teaserService = new TeaserService(teasers, eventBus);
             paymentService = new PaymentService(payments);
         }

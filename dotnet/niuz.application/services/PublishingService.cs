@@ -1,7 +1,6 @@
 using niuz.application.entities;
 using niuz.application.events;
 using niuz.application.repositories;
-using niuz.application.website;
 
 namespace niuz.application.services
 {
@@ -9,15 +8,13 @@ namespace niuz.application.services
     {
         private readonly IAuthorRepository authors;
         private readonly IArticleRepository articles;
-        private readonly ITeaserRepository teasers;
         private readonly IPaymentRepository payments;
         private readonly IEventPublisher publisher;
 
-        public PublishingService(IAuthorRepository authors, IArticleRepository articles, ITeaserRepository teasers, IPaymentRepository payments, IEventPublisher publisher)
+        public PublishingService(IAuthorRepository authors, IArticleRepository articles, IPaymentRepository payments, IEventPublisher publisher)
         {
             this.authors = authors;
             this.articles = articles;
-            this.teasers = teasers;
             this.payments = payments;
             this.publisher = publisher;
         }
