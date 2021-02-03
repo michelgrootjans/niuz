@@ -2,21 +2,20 @@ namespace niuz.application.entities
 {
     public class Article
     {
-        private readonly string articleId;
-
-        public Article(string articleId, string authorId, string headline)
+        public Article(string id, string authorId, string headline)
         {
-            this.articleId = articleId;
+            Id = id;
             AuthorId = authorId;
             Headline = headline;
         }
 
+        public string Id { get; }
         public string AuthorId { get; }
         public string Headline { get; }
 
         protected bool Equals(Article other)
         {
-            return articleId == other.articleId;
+            return Id == other.Id;
         }
 
         public override bool Equals(object obj)
@@ -29,7 +28,7 @@ namespace niuz.application.entities
 
         public override int GetHashCode()
         {
-            return (articleId != null ? articleId.GetHashCode() : 0);
+            return (Id != null ? Id.GetHashCode() : 0);
         }
     }
 }

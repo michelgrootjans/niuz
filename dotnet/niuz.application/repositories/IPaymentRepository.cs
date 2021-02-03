@@ -6,6 +6,6 @@ namespace niuz.application.repositories
     public interface IPaymentRepository
     {
         void Save(Payment payment);
-        List<Payment> GetByBankAccount(string bankAccount);
+        IEnumerable<Payment> GetByBankAccount(string bankAccount);
     }
 }

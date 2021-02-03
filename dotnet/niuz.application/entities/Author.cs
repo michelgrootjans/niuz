@@ -2,10 +2,10 @@ namespace niuz.application.entities
 {
     public class Author
     {
-        private readonly string id;
+        public string Id { get; }
         public string Name { get; }
         public string BankAccount { get; }
-        public string ContractType { get; }
+        private string ContractType { get; }
         public int Rate { get; }
         public bool PaysBySubmission => ContractType == "pay-by-submission";
         public bool PaysByPublication => ContractType == "pay-by-publication";
@@ -13,7 +13,7 @@ namespace niuz.application.entities
 
         public Author(string id, string name, string bankAccount, string contractType, int rate)
         {
-            this.id = id;
+            Id = id;
             Name = name;
             BankAccount = bankAccount;
             ContractType = contractType;
@@ -22,7 +22,7 @@ namespace niuz.application.entities
 
         protected bool Equals(Author other)
         {
-            return id == other.id;
+            return Id == other.Id;
         }
 
         public override bool Equals(object obj)
@@ -35,7 +35,7 @@ namespace niuz.application.entities
 
         public override int GetHashCode()
         {
-            return (id != null ? id.GetHashCode() : 0);
+            return (Id != null ? Id.GetHashCode() : 0);
         }
     }
 }
