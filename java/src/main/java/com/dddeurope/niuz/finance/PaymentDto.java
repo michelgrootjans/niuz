@@ -1,4 +1,4 @@
-package com.dddeurope.niuz.dtos;
+package com.dddeurope.niuz.finance;
 
 import java.util.Objects;
 

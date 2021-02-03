@@ -1,6 +1,6 @@
-package com.dddeurope.niuz.repositories;
+package com.dddeurope.niuz.finance;
 
-import com.dddeurope.niuz.entities.Payment;
+import com.dddeurope.niuz.finance.Payment;
 
 import java.util.List;
 

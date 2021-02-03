@@ -1,10 +1,11 @@
 package com.dddeurope.niuz.fixtures;
 
-import com.dddeurope.niuz.dtos.PaymentDto;
+import com.dddeurope.niuz.finance.PaymentDto;
+import com.dddeurope.niuz.finance.PaymentService;
 import com.dddeurope.niuz.website.TeaserDto;
 import com.dddeurope.niuz.repositories.ArticleRepository;
 import com.dddeurope.niuz.repositories.AuthorRepository;
-import com.dddeurope.niuz.repositories.PaymentRepository;
+import com.dddeurope.niuz.finance.PaymentRepository;
 import com.dddeurope.niuz.website.TeaserRepository;
 import com.dddeurope.niuz.services.*;
 import com.dddeurope.niuz.website.TeaserService;

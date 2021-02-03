@@ -1,7 +1,7 @@
 package com.dddeurope.niuz.fixtures;
 
-import com.dddeurope.niuz.entities.Payment;
-import com.dddeurope.niuz.repositories.PaymentRepository;
+import com.dddeurope.niuz.finance.Payment;
+import com.dddeurope.niuz.finance.PaymentRepository;
 
 import java.util.ArrayList;
 import java.util.List;

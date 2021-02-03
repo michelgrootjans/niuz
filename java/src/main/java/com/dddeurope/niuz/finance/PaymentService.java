@@ -1,12 +1,9 @@
-package com.dddeurope.niuz.services;
+package com.dddeurope.niuz.finance;
 
-import com.dddeurope.niuz.dtos.PaymentDto;
-import com.dddeurope.niuz.entities.Payment;
 import com.dddeurope.niuz.events.ArticlePublished;
 import com.dddeurope.niuz.events.ArticleSubmitted;
 import com.dddeurope.niuz.events.ContractSigned;
 import com.dddeurope.niuz.events.Topic;
-import com.dddeurope.niuz.repositories.PaymentRepository;
 
 import java.util.ArrayList;
 import java.util.List;

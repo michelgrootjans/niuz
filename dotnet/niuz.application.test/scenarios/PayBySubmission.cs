@@ -1,5 +1,5 @@
 using FluentAssertions;
-using niuz.application.dtos;
+using niuz.application.finance;
 using niuz.application.fixtures;
 using niuz.application.website;
 using Xunit;

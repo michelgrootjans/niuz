@@ -1,11 +1,11 @@
 package com.dddeurope.niuz.events;
 
 public class ContractSigned {
-    private String authorId;
-    private String contractType;
-    private Integer rate;
-    private String bankAccount;
-    private String authorName;
+    private final String authorId;
+    private final String contractType;
+    private final Integer rate;
+    private final String bankAccount;
+    private final String authorName;
 
     public ContractSigned(String authorId, String contractType, Integer rate, String bankAccount, String authorName) {
         this.authorId = authorId;

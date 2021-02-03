@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using niuz.application.entities;
+using niuz.application.finance;
 using niuz.application.repositories;
 
 namespace niuz.application.fixtures

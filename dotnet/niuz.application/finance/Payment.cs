@@ -1,6 +1,6 @@
 using System;
 
-namespace niuz.application.entities
+namespace niuz.application.finance
 {
     public class Payment
     {

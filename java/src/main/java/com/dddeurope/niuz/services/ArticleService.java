@@ -1,14 +1,9 @@
 package com.dddeurope.niuz.services;
 
 import com.dddeurope.niuz.entities.Article;
-import com.dddeurope.niuz.entities.Author;
-import com.dddeurope.niuz.entities.Payment;
 import com.dddeurope.niuz.events.ArticleSubmitted;
-import com.dddeurope.niuz.events.ContractSigned;
 import com.dddeurope.niuz.events.EventPublisher;
 import com.dddeurope.niuz.repositories.ArticleRepository;
-import com.dddeurope.niuz.repositories.AuthorRepository;
-import com.dddeurope.niuz.repositories.PaymentRepository;
 
 public class ArticleService {
     private final ArticleRepository articles;
