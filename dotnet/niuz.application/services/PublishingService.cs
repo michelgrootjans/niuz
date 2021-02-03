@@ -24,11 +24,7 @@ namespace niuz.application.services
             var article = articles.GetByArticleId(articleId);
             var author = authors.GetByAuthorId(article.AuthorId);
 
-            publisher.Publish(new ArticlePublished(article.Headline, author.Name));
-            if (author.PaysByPublication)
-            {
-                payments.Save(new Payment(author.Rate, author.BankAccount, author.Name, article.Headline));    
-            }
+            publisher.Publish(new ArticlePublished(author.Id, author.Name, article.Headline));
         }
     }
 }

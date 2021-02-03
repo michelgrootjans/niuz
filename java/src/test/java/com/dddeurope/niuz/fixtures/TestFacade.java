@@ -25,11 +25,11 @@ public class TestFacade {
         PaymentRepository payments = new InMemoryPayments();
         InMemoryEventBus eventBus = new InMemoryEventBus();
 
-        authorService = new AuthorService(authors);
-        articleService = new ArticleService(authors, articles, payments);
+        authorService = new AuthorService(authors, eventBus);
+        articleService = new ArticleService(authors, articles, payments, eventBus);
         publishingService = new PublishingService(authors, articles, payments, eventBus);
         teaserService = new TeaserService(teasers, eventBus);
-        paymentService = new PaymentService(payments);
+        paymentService = new PaymentService(payments, eventBus);
     }
 
     public void hire(String authorId, String authorName, String bankAccount, String contractType, int rate) {

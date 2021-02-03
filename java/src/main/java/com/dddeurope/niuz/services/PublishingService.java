@@ -26,9 +26,6 @@ public class PublishingService {
         Article article = articles.getByArticleId(articleId);
         Author author = authors.getByAuthorId(article.getAuthorId());
 
-        publisher.publish(new ArticlePublished(article.getHeadline(), author.getName()));
-        if (author.paysByPublication()) {
-            payments.save(new Payment(author.getRate(), author.getBankAccount(), author.getName(), article.getHeadline()));
-        }
+        publisher.publish(new ArticlePublished(author.getId(), author.getName(), article.getHeadline()));
     }
 }

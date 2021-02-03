@@ -2,13 +2,15 @@ namespace niuz.application.events
 {
     public class ArticlePublished
     {
-        public ArticlePublished(string headline, string author)
+        public ArticlePublished(string authorId, string authorName, string headline)
         {
             Headline = headline;
-            Author = author;
+            AuthorName = authorName;
+            AuthorId = authorId;
         }
 
+        public string AuthorId { get; }
+        public string AuthorName { get; }
         public string Headline { get; }
-        public string Author { get; }
     }
 }

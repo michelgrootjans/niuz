@@ -16,7 +16,7 @@ namespace niuz.application.website
 
         private void Publish(ArticlePublished @event)
         {
-            teasers.Save("homepage", new Teaser(@event.Headline, @event.Author));
+            teasers.Save("homepage", new Teaser(@event.Headline, @event.AuthorName));
         }
         
         public IEnumerable<TeaserDto> Get(string page)

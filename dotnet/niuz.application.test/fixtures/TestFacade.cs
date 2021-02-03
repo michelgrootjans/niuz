@@ -21,11 +21,11 @@ namespace niuz.application.fixtures
             var payments = new InMemoryPayments();
             var eventBus = new InMemoryEventBus();
 
-            authorService = new AuthorService(authors);
-            articleService = new ArticleService(authors, articles, payments);
+            authorService = new AuthorService(authors, eventBus);
+            articleService = new ArticleService(authors, articles, payments, eventBus);
             publishingService = new PublishingService(authors, articles, payments, eventBus);
             teaserService = new TeaserService(teasers, eventBus);
-            paymentService = new PaymentService(payments);
+            paymentService = new PaymentService(payments, eventBus);
         }
 
         public void Hire(string authorId, string authorName, string bankAccount, string contractType, int rate)
