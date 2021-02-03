@@ -6,11 +6,9 @@ import com.dddeurope.niuz.events.EventPublisher;
 import com.dddeurope.niuz.newsroom.AuthorRepository;
 
 public class AuthorService {
-    private final AuthorRepository authors;
     private final EventPublisher publisher;
 
-    public AuthorService(AuthorRepository authors, EventPublisher publisher) {
-        this.authors = authors;
+    public AuthorService(EventPublisher publisher) {
         this.publisher = publisher;
     }
 

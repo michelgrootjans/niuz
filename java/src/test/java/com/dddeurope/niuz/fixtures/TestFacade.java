@@ -28,7 +28,7 @@ public class TestFacade {
         ContractRepository contracts = new InMemoryContractRepository();
         InMemoryEventBus eventBus = new InMemoryEventBus();
 
-        authorService = new AuthorService(authors, eventBus);
+        authorService = new AuthorService(eventBus);
         newsroomService = new NewsroomService(authors, articles, eventBus, eventBus);
         teaserService = new TeaserService(teasers, eventBus);
         paymentService = new PaymentService(contracts, payments, eventBus);

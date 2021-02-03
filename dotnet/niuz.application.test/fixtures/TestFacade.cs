@@ -21,7 +21,7 @@ namespace niuz.application.fixtures
             var payments = new InMemoryPayments();
             var eventBus = new InMemoryEventBus();
 
-            authorService = new AuthorService(authors, eventBus);
+            authorService = new AuthorService(eventBus);
             newsRoomService = new NewsRoomService(authors, articles, eventBus, eventBus);
             teaserService = new TeaserService(teasers, eventBus);
             paymentService = new PaymentService(new InMemoryContracts(), payments, eventBus);
