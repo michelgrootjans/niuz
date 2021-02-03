@@ -18,11 +18,12 @@ namespace niuz.application.fixtures
             var articles = new InMemoryArticles();
             var teasers = new InMemoryTeasers();
             var payments = new InMemoryPayments();
+            var eventBus = new InMemoryEventBus();
 
             authorService = new AuthorService(authors);
             articleService = new ArticleService(authors, articles, payments);
-            publishingService = new PublishingService(authors, articles, teasers, payments);
-            teaserService = new TeaserService(teasers);
+            publishingService = new PublishingService(authors, articles, teasers, payments, eventBus);
+            teaserService = new TeaserService(teasers, eventBus);
             paymentService = new PaymentService(payments);
         }
 
