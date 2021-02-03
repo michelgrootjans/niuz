@@ -11,10 +11,10 @@ public class NewsroomService {
         this.authors = authors;
         this.articles = articles;
         this.publisher = publisher;
-        topic.subscribe(ContractSigned.class, this::hire);
+        topic.subscribe(ContractSigned.class, this::onboard);
     }
 
-    private void hire(ContractSigned event) {
+    private void onboard(ContractSigned event) {
         authors.save(new Author(event.getAuthorId(), event.getAuthorName()));
     }
 

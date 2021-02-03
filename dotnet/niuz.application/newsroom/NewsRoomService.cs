@@ -13,10 +13,10 @@ namespace niuz.application.newsroom
             this.authors = authors;
             this.articles = articles;
             this.publisher = publisher;
-            topic.Subscribe<ContractSigned>(Hire);
+            topic.Subscribe<ContractSigned>(Onboard);
         }
 
-        private void Hire(ContractSigned @event)
+        private void Onboard(ContractSigned @event)
         {
             authors.Save(new Author(@event.AuthorId, @event.AuthorName));
         }
