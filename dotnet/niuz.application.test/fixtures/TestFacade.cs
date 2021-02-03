@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using niuz.application.finance;
+using niuz.application.hr;
 using niuz.application.newsroom;
-using niuz.application.services;
 using niuz.application.website;
 
 namespace niuz.application.fixtures

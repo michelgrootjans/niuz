@@ -3,13 +3,13 @@ package com.dddeurope.niuz.fixtures;
 import com.dddeurope.niuz.finance.ContractRepository;
 import com.dddeurope.niuz.finance.PaymentDto;
 import com.dddeurope.niuz.finance.PaymentService;
+import com.dddeurope.niuz.hr.AuthorService;
 import com.dddeurope.niuz.newsroom.NewsroomService;
 import com.dddeurope.niuz.website.TeaserDto;
 import com.dddeurope.niuz.newsroom.ArticleRepository;
 import com.dddeurope.niuz.newsroom.AuthorRepository;
 import com.dddeurope.niuz.finance.PaymentRepository;
 import com.dddeurope.niuz.website.TeaserRepository;
-import com.dddeurope.niuz.services.*;
 import com.dddeurope.niuz.website.TeaserService;
 
 import java.util.List;

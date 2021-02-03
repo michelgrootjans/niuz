@@ -1,6 +1,6 @@
 using niuz.application.events;
 
-namespace niuz.application.services
+namespace niuz.application.hr
 {
     public class AuthorService
     {

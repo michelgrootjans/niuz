@@ -1,9 +1,7 @@
-package com.dddeurope.niuz.services;
-
+package com.dddeurope.niuz.hr;
 
 import com.dddeurope.niuz.events.ContractSigned;
 import com.dddeurope.niuz.events.EventPublisher;
-import com.dddeurope.niuz.newsroom.AuthorRepository;
 
 public class AuthorService {
     private final EventPublisher publisher;
