@@ -1,5 +1,6 @@
 package com.dddeurope.niuz.fixtures;
 
+import com.dddeurope.niuz.finance.ContractRepository;
 import com.dddeurope.niuz.finance.PaymentDto;
 import com.dddeurope.niuz.finance.PaymentService;
 import com.dddeurope.niuz.website.TeaserDto;
@@ -24,13 +25,14 @@ public class TestFacade {
         ArticleRepository articles = new InMemoryArticles();
         TeaserRepository teasers = new InMemoryTeasers();
         PaymentRepository payments = new InMemoryPayments();
+        ContractRepository contracts = new InMemoryContractRepository();
         InMemoryEventBus eventBus = new InMemoryEventBus();
 
         authorService = new AuthorService(authors, eventBus);
         articleService = new ArticleService(articles, eventBus);
         publishingService = new PublishingService(authors, articles, eventBus);
         teaserService = new TeaserService(teasers, eventBus);
-        paymentService = new PaymentService(payments, eventBus);
+        paymentService = new PaymentService(contracts, payments, eventBus);
     }
 
     public void hire(String authorId, String authorName, String bankAccount, String contractType, int rate) {

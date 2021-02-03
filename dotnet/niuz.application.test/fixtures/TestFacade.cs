@@ -25,7 +25,7 @@ namespace niuz.application.fixtures
             articleService = new ArticleService(articles, eventBus);
             publishingService = new PublishingService(authors, articles, eventBus);
             teaserService = new TeaserService(teasers, eventBus);
-            paymentService = new PaymentService(payments, eventBus);
+            paymentService = new PaymentService(new InMemoryContracts(), payments, eventBus);
         }
 
         public void Hire(string authorId, string authorName, string bankAccount, string contractType, int rate)
