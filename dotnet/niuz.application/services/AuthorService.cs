@@ -18,7 +18,6 @@ namespace niuz.application.services
         public void Hire(string authorId, string authorName, string bankAccount, string contractType, int rate)
         {
             publisher.Publish(new ContractSigned(authorId, authorName, contractType, rate, bankAccount));
-            authors.Save(new Author(authorId, authorName, bankAccount, contractType, rate));
         }
     }
 }

@@ -30,7 +30,7 @@ public class TestFacade {
 
         authorService = new AuthorService(authors, eventBus);
         articleService = new ArticleService(articles, eventBus);
-        publishingService = new PublishingService(authors, articles, eventBus);
+        publishingService = new PublishingService(authors, articles, eventBus, eventBus);
         teaserService = new TeaserService(teasers, eventBus);
         paymentService = new PaymentService(contracts, payments, eventBus);
     }

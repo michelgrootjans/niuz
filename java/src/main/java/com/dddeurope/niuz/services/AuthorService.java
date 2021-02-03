@@ -17,6 +17,5 @@ public class AuthorService {
 
     public void hire(String authorId, String authorName, String bankAccount, String contractType, int rate) {
         publisher.publish(new ContractSigned(authorId, contractType, rate, bankAccount, authorName));
-        authors.save(new Author(authorId, authorName, bankAccount, contractType, rate));
     }
 }
