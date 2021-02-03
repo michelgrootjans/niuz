@@ -11,15 +11,11 @@ import com.dddeurope.niuz.repositories.AuthorRepository;
 import com.dddeurope.niuz.repositories.PaymentRepository;
 
 public class ArticleService {
-    private final AuthorRepository authors;
     private final ArticleRepository articles;
-    private final PaymentRepository payments;
     private final EventPublisher publisher;
 
-    public ArticleService(AuthorRepository authors, ArticleRepository articles, PaymentRepository payments, EventPublisher publisher) {
-        this.authors = authors;
+    public ArticleService(ArticleRepository articles, EventPublisher publisher) {
         this.articles = articles;
-        this.payments = payments;
         this.publisher = publisher;
     }
 

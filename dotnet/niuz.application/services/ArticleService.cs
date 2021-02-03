@@ -6,16 +6,12 @@ namespace niuz.application.services
 {
     public class ArticleService
     {
-        private readonly IAuthorRepository authors;
         private readonly IArticleRepository articles;
-        private readonly IPaymentRepository payments;
         private readonly IEventPublisher publisher;
 
-        public ArticleService(IAuthorRepository authors, IArticleRepository articles, IPaymentRepository payments, IEventPublisher publisher)
+        public ArticleService(IArticleRepository articles, IEventPublisher publisher)
         {
-            this.authors = authors;
             this.articles = articles;
-            this.payments = payments;
             this.publisher = publisher;
         }
 

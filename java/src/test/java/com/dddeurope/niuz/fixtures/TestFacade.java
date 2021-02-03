@@ -26,7 +26,7 @@ public class TestFacade {
         InMemoryEventBus eventBus = new InMemoryEventBus();
 
         authorService = new AuthorService(authors, eventBus);
-        articleService = new ArticleService(authors, articles, payments, eventBus);
+        articleService = new ArticleService(articles, eventBus);
         publishingService = new PublishingService(authors, articles, payments, eventBus);
         teaserService = new TeaserService(teasers, eventBus);
         paymentService = new PaymentService(payments, eventBus);
