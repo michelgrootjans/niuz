@@ -27,7 +27,7 @@ public class TestFacade {
 
         authorService = new AuthorService(authors, eventBus);
         articleService = new ArticleService(articles, eventBus);
-        publishingService = new PublishingService(authors, articles, payments, eventBus);
+        publishingService = new PublishingService(authors, articles, eventBus);
         teaserService = new TeaserService(teasers, eventBus);
         paymentService = new PaymentService(payments, eventBus);
     }
