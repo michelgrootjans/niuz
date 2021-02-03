@@ -1,6 +1,4 @@
-package com.dddeurope.niuz.repositories;
-
-import com.dddeurope.niuz.entities.Author;
+package com.dddeurope.niuz.newsroom;
 
 public interface AuthorRepository {
     void save(Author author);

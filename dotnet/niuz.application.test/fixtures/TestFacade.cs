@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using niuz.application.finance;
+using niuz.application.newsroom;
 using niuz.application.services;
 using niuz.application.website;
 
@@ -8,8 +9,7 @@ namespace niuz.application.fixtures
     public class TestFacade
     {
         private readonly AuthorService authorService;
-        private readonly ArticleService articleService;
-        private readonly PublishingService publishingService;
+        private readonly NewsRoomService newsRoomService;
         private readonly TeaserService teaserService;
         private readonly PaymentService paymentService;
 
@@ -22,8 +22,7 @@ namespace niuz.application.fixtures
             var eventBus = new InMemoryEventBus();
 
             authorService = new AuthorService(authors, eventBus);
-            articleService = new ArticleService(articles, eventBus);
-            publishingService = new PublishingService(authors, articles, eventBus, eventBus);
+            newsRoomService = new NewsRoomService(authors, articles, eventBus, eventBus);
             teaserService = new TeaserService(teasers, eventBus);
             paymentService = new PaymentService(new InMemoryContracts(), payments, eventBus);
         }
@@ -35,12 +34,12 @@ namespace niuz.application.fixtures
 
         public void Submit(string articleId, string authorId, string headline)
         {
-            articleService.Submit(articleId, authorId, headline);
+            newsRoomService.Submit(articleId, authorId, headline);
         }
 
         public void Publish(string articleId)
         {
-            publishingService.Publish(articleId);
+            newsRoomService.Publish(articleId);
         }
 
         public IEnumerable<TeaserDto> Get(string page)

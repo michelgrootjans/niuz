@@ -1,4 +1,4 @@
-package com.dddeurope.niuz.entities;
+package com.dddeurope.niuz.newsroom;
 
 import java.util.Objects;
 

@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using niuz.application.entities;
-using niuz.application.repositories;
 using niuz.application.website;
 
 namespace niuz.application.fixtures

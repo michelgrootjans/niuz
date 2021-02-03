@@ -1,6 +1,4 @@
-using niuz.application.entities;
-
-namespace niuz.application.repositories
+namespace niuz.application.newsroom
 {
     public interface IArticleRepository
     {

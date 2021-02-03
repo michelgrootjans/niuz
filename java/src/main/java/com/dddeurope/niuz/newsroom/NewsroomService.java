@@ -1,20 +1,13 @@
-package com.dddeurope.niuz.services;
+package com.dddeurope.niuz.newsroom;
 
-import com.dddeurope.niuz.entities.Article;
-import com.dddeurope.niuz.entities.Author;
-import com.dddeurope.niuz.events.ArticlePublished;
-import com.dddeurope.niuz.events.ContractSigned;
-import com.dddeurope.niuz.events.EventPublisher;
-import com.dddeurope.niuz.events.Topic;
-import com.dddeurope.niuz.repositories.ArticleRepository;
-import com.dddeurope.niuz.repositories.AuthorRepository;
+import com.dddeurope.niuz.events.*;
 
-public class PublishingService {
+public class NewsroomService {
     private final AuthorRepository authors;
     private final ArticleRepository articles;
     private final EventPublisher publisher;
 
-    public PublishingService(AuthorRepository authors, ArticleRepository articles, Topic topic, EventPublisher publisher) {
+    public NewsroomService(AuthorRepository authors, ArticleRepository articles, Topic topic, EventPublisher publisher) {
         this.authors = authors;
         this.articles = articles;
         this.publisher = publisher;
@@ -23,6 +16,11 @@ public class PublishingService {
 
     private void hire(ContractSigned event) {
         authors.save(new Author(event.getAuthorId(), event.getAuthorName(), null, null, 0));
+    }
+
+    public void submit(String articleId, String authorId, String headline) {
+        articles.save(new Article(articleId, authorId, headline));
+        publisher.publish(new ArticleSubmitted(authorId, headline));
     }
 
     public void publish(String articleId) {

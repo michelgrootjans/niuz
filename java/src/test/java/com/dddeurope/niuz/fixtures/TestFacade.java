@@ -3,9 +3,10 @@ package com.dddeurope.niuz.fixtures;
 import com.dddeurope.niuz.finance.ContractRepository;
 import com.dddeurope.niuz.finance.PaymentDto;
 import com.dddeurope.niuz.finance.PaymentService;
+import com.dddeurope.niuz.newsroom.NewsroomService;
 import com.dddeurope.niuz.website.TeaserDto;
-import com.dddeurope.niuz.repositories.ArticleRepository;
-import com.dddeurope.niuz.repositories.AuthorRepository;
+import com.dddeurope.niuz.newsroom.ArticleRepository;
+import com.dddeurope.niuz.newsroom.AuthorRepository;
 import com.dddeurope.niuz.finance.PaymentRepository;
 import com.dddeurope.niuz.website.TeaserRepository;
 import com.dddeurope.niuz.services.*;
@@ -15,8 +16,7 @@ import java.util.List;
 
 public class TestFacade {
     private final AuthorService authorService;
-    private final ArticleService articleService;
-    private final PublishingService publishingService;
+    private final NewsroomService newsroomService;
     private final TeaserService teaserService;
     private final PaymentService paymentService;
 
@@ -29,8 +29,7 @@ public class TestFacade {
         InMemoryEventBus eventBus = new InMemoryEventBus();
 
         authorService = new AuthorService(authors, eventBus);
-        articleService = new ArticleService(articles, eventBus);
-        publishingService = new PublishingService(authors, articles, eventBus, eventBus);
+        newsroomService = new NewsroomService(authors, articles, eventBus, eventBus);
         teaserService = new TeaserService(teasers, eventBus);
         paymentService = new PaymentService(contracts, payments, eventBus);
     }
@@ -40,11 +39,11 @@ public class TestFacade {
     }
 
     public void submit(String articleId, String authorId, String headline) {
-        articleService.submit(articleId, authorId, headline);
+        newsroomService.submit(articleId, authorId, headline);
     }
 
     public void publish(String articleId) {
-        publishingService.publish(articleId);
+        newsroomService.publish(articleId);
     }
 
     public List<TeaserDto> get(String page) {

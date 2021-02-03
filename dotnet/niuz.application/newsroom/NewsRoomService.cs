@@ -1,16 +1,14 @@
-using niuz.application.entities;
 using niuz.application.events;
-using niuz.application.repositories;
 
-namespace niuz.application.services
+namespace niuz.application.newsroom
 {
-    public class PublishingService
+    public class NewsRoomService
     {
         private readonly IAuthorRepository authors;
         private readonly IArticleRepository articles;
         private readonly IEventPublisher publisher;
 
-        public PublishingService(IAuthorRepository authors, IArticleRepository articles, ITopic topic, IEventPublisher publisher)
+        public NewsRoomService(IAuthorRepository authors, IArticleRepository articles, ITopic topic, IEventPublisher publisher)
         {
             this.authors = authors;
             this.articles = articles;
@@ -21,6 +19,12 @@ namespace niuz.application.services
         private void Hire(ContractSigned @event)
         {
             authors.Save(new Author(@event.AuthorId, @event.AuthorName, null, null, 0));
+        }
+
+        public void Submit(string articleId, string authorId, string headline)
+        {
+            articles.Save(new Article(articleId, authorId, headline));
+            publisher.Publish(new ArticleSubmitted(authorId, headline));
         }
 
         public void Publish(string articleId)

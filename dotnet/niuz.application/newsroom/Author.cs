@@ -1,4 +1,4 @@
-namespace niuz.application.entities
+namespace niuz.application.newsroom
 {
     public class Author
     {

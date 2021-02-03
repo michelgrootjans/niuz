@@ -1,6 +1,4 @@
-package com.dddeurope.niuz.repositories;
-
-import com.dddeurope.niuz.entities.Article;
+package com.dddeurope.niuz.newsroom;
 
 public interface ArticleRepository {
     void save(Article article);

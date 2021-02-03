@@ -1,10 +1,9 @@
 package com.dddeurope.niuz.services;
 
 
-import com.dddeurope.niuz.entities.Author;
 import com.dddeurope.niuz.events.ContractSigned;
 import com.dddeurope.niuz.events.EventPublisher;
-import com.dddeurope.niuz.repositories.AuthorRepository;
+import com.dddeurope.niuz.newsroom.AuthorRepository;
 
 public class AuthorService {
     private final AuthorRepository authors;

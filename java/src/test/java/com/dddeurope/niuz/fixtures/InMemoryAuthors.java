@@ -1,7 +1,7 @@
 package com.dddeurope.niuz.fixtures;
 
-import com.dddeurope.niuz.entities.Author;
-import com.dddeurope.niuz.repositories.AuthorRepository;
+import com.dddeurope.niuz.newsroom.Author;
+import com.dddeurope.niuz.newsroom.AuthorRepository;
 
 import java.util.HashMap;
 import java.util.Map;
