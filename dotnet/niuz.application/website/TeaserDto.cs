@@ -1,6 +1,6 @@
 using System;
 
-namespace niuz.application.dtos
+namespace niuz.application.website
 {
     public class TeaserDto
     {

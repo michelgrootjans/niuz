@@ -1,7 +1,7 @@
 package com.dddeurope.niuz.scenarios;
 
 import com.dddeurope.niuz.dtos.PaymentDto;
-import com.dddeurope.niuz.dtos.TeaserDto;
+import com.dddeurope.niuz.website.TeaserDto;
 import com.dddeurope.niuz.fixtures.TestFacade;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

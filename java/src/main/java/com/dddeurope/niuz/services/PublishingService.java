@@ -3,13 +3,12 @@ package com.dddeurope.niuz.services;
 import com.dddeurope.niuz.entities.Article;
 import com.dddeurope.niuz.entities.Author;
 import com.dddeurope.niuz.entities.Payment;
-import com.dddeurope.niuz.entities.Teaser;
 import com.dddeurope.niuz.events.ArticlePublished;
 import com.dddeurope.niuz.events.EventPublisher;
 import com.dddeurope.niuz.repositories.ArticleRepository;
 import com.dddeurope.niuz.repositories.AuthorRepository;
 import com.dddeurope.niuz.repositories.PaymentRepository;
-import com.dddeurope.niuz.repositories.TeaserRepository;
+import com.dddeurope.niuz.website.TeaserRepository;
 
 public class PublishingService {
     private final AuthorRepository authors;

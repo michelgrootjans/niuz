@@ -1,7 +1,7 @@
 package com.dddeurope.niuz.fixtures;
 
-import com.dddeurope.niuz.entities.Teaser;
-import com.dddeurope.niuz.repositories.TeaserRepository;
+import com.dddeurope.niuz.website.Teaser;
+import com.dddeurope.niuz.website.TeaserRepository;
 
 import java.util.ArrayList;
 import java.util.HashMap;

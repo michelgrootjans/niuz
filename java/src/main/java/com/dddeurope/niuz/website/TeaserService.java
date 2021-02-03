@@ -1,10 +1,7 @@
-package com.dddeurope.niuz.services;
+package com.dddeurope.niuz.website;
 
-import com.dddeurope.niuz.dtos.TeaserDto;
-import com.dddeurope.niuz.entities.Teaser;
 import com.dddeurope.niuz.events.ArticlePublished;
 import com.dddeurope.niuz.events.Topic;
-import com.dddeurope.niuz.repositories.TeaserRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;

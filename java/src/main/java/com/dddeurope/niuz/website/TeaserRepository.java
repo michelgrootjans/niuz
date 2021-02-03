@@ -1,6 +1,4 @@
-package com.dddeurope.niuz.repositories;
-
-import com.dddeurope.niuz.entities.Teaser;
+package com.dddeurope.niuz.website;
 
 import java.util.List;
 

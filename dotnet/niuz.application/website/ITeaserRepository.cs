@@ -1,7 +1,6 @@
 using System.Collections.Generic;
-using niuz.application.entities;
 
-namespace niuz.application.repositories
+namespace niuz.application.website
 {
     public interface ITeaserRepository
     {

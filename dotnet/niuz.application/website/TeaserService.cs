@@ -1,11 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
-using niuz.application.dtos;
-using niuz.application.entities;
 using niuz.application.events;
-using niuz.application.repositories;
 
-namespace niuz.application.services
+namespace niuz.application.website
 {
     public class TeaserService
     {

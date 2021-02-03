@@ -1,6 +1,6 @@
 using System;
 
-namespace niuz.application.entities
+namespace niuz.application.website
 {
     public class Teaser
     {

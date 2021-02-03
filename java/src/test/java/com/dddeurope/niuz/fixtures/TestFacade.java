@@ -1,12 +1,13 @@
 package com.dddeurope.niuz.fixtures;
 
 import com.dddeurope.niuz.dtos.PaymentDto;
-import com.dddeurope.niuz.dtos.TeaserDto;
+import com.dddeurope.niuz.website.TeaserDto;
 import com.dddeurope.niuz.repositories.ArticleRepository;
 import com.dddeurope.niuz.repositories.AuthorRepository;
 import com.dddeurope.niuz.repositories.PaymentRepository;
-import com.dddeurope.niuz.repositories.TeaserRepository;
+import com.dddeurope.niuz.website.TeaserRepository;
 import com.dddeurope.niuz.services.*;
+import com.dddeurope.niuz.website.TeaserService;
 
 import java.util.List;
 
