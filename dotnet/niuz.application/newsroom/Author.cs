@@ -4,20 +4,12 @@ namespace niuz.application.newsroom
     {
         public string Id { get; }
         public string Name { get; }
-        public string BankAccount { get; }
-        private string ContractType { get; }
-        public int Rate { get; }
-        public bool PaysBySubmission => ContractType == "pay-by-submission";
-        public bool PaysByPublication => ContractType == "pay-by-publication";
 
 
-        public Author(string id, string name, string bankAccount, string contractType, int rate)
+        public Author(string id, string name)
         {
             Id = id;
             Name = name;
-            BankAccount = bankAccount;
-            ContractType = contractType;
-            Rate = rate;
         }
 
         protected bool Equals(Author other)

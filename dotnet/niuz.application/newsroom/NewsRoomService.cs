@@ -18,7 +18,7 @@ namespace niuz.application.newsroom
 
         private void Hire(ContractSigned @event)
         {
-            authors.Save(new Author(@event.AuthorId, @event.AuthorName, null, null, 0));
+            authors.Save(new Author(@event.AuthorId, @event.AuthorName));
         }
 
         public void Submit(string articleId, string authorId, string headline)

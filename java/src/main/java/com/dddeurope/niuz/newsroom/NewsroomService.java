@@ -15,7 +15,7 @@ public class NewsroomService {
     }
 
     private void hire(ContractSigned event) {
-        authors.save(new Author(event.getAuthorId(), event.getAuthorName(), null, null, 0));
+        authors.save(new Author(event.getAuthorId(), event.getAuthorName()));
     }
 
     public void submit(String articleId, String authorId, String headline) {
