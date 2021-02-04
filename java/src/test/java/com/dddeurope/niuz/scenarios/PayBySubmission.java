@@ -1,6 +1,7 @@
 package com.dddeurope.niuz.scenarios;
 
 import com.dddeurope.niuz.finance.PaymentDto;
+import com.dddeurope.niuz.hr.HireAuthor;
 import com.dddeurope.niuz.website.TeaserDto;
 import com.dddeurope.niuz.fixtures.TestFacade;
 import org.junit.jupiter.api.BeforeEach;
@@ -18,7 +19,7 @@ public class PayBySubmission {
 
     @Test
     void submitArticle() {
-        app.hire("author-1", "Freddy Kruger", "123-4567-89", "pay-by-submission", 50);
+        app.dispatch(new HireAuthor("author-1", "Freddy Kruger", "pay-by-submission", 50, "123-4567-89"));
         app.submit("article-1", "author-1", "headline");
 
         assertThat(app.get("homepage")).isEmpty();
@@ -29,7 +30,7 @@ public class PayBySubmission {
 
     @Test
     void publishArticle() {
-        app.hire("author-1", "Freddy Kruger", "123-4567-89", "pay-by-submission", 50);
+        app.dispatch(new HireAuthor("author-1", "Freddy Kruger", "pay-by-submission", 50, "123-4567-89"));
         app.submit("article-1", "author-1", "headline");
         app.publish("article-1");
 

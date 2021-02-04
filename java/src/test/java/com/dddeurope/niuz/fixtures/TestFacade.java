@@ -36,8 +36,8 @@ public class TestFacade {
         commandDispatcher = new CommandDispatcher(new AuthorService(eventBus));
     }
 
-    public void hire(String authorId, String authorName, String bankAccount, String contractType, int rate) {
-        commandDispatcher.dispatch(new HireAuthor(authorId, authorName, contractType, rate, bankAccount));
+    public void dispatch(Object command) {
+        commandDispatcher.dispatch(command);
     }
 
     public void submit(String articleId, String authorId, String headline) {

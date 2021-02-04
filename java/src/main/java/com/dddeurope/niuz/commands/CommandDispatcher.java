@@ -12,7 +12,7 @@ public class CommandDispatcher {
         this.handlers = Arrays.asList(handlers);
     }
 
-    public void dispatch(HireAuthor command) {
+    public void dispatch(Object command) {
         handlers.stream()
                 .filter(handler -> handler.canHandle(command))
                 .forEach(handler -> handler.handle(command));

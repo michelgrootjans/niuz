@@ -30,9 +30,9 @@ namespace niuz.application.fixtures
             commandDispatcher = new CommandDispatcher(authorService);
         }
 
-        public void Hire(string authorId, string authorName, string bankAccount, string contractType, int rate)
+        public void Dispatch<T>(T command)
         {
-            commandDispatcher.Dispatch(new HireAuthor(authorId, authorName, contractType, rate, bankAccount));
+            commandDispatcher.Dispatch(command);
         }
 
         public void Submit(string articleId, string authorId, string headline)

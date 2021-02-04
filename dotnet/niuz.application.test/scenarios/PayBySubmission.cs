@@ -1,6 +1,7 @@
 using FluentAssertions;
 using niuz.application.finance;
 using niuz.application.fixtures;
+using niuz.application.hr;
 using niuz.application.website;
 using Xunit;
 
@@ -18,7 +19,7 @@ namespace niuz.application.scenarios
         [Fact]
         public void SubmitArticle()
         {
-            app.Hire("author-1", "Freddy Kruger", "123-4567-89", "pay-by-submission", 50);
+            app.Dispatch(new HireAuthor("author-1", "Freddy Kruger", "pay-by-submission", 50, "123-4567-89"));
             app.Submit("article-1", "author-1", "headline");
 
             app.Get("homepage").Should().BeEmpty();
@@ -30,7 +31,7 @@ namespace niuz.application.scenarios
         [Fact]
         public void PublishArticle()
         {
-            app.Hire("author-1", "Freddy Kruger", "123-4567-89", "pay-by-submission", 50);
+            app.Dispatch(new HireAuthor("author-1", "Freddy Kruger", "pay-by-submission", 50, "123-4567-89"));
             app.Submit("article-1", "author-1", "headline");
             app.Publish("article-1");
 
