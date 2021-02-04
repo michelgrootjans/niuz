@@ -4,6 +4,7 @@ import com.dddeurope.niuz.finance.ContractRepository;
 import com.dddeurope.niuz.finance.PaymentDto;
 import com.dddeurope.niuz.finance.PaymentService;
 import com.dddeurope.niuz.hr.AuthorService;
+import com.dddeurope.niuz.hr.HireAuthor;
 import com.dddeurope.niuz.newsroom.NewsroomService;
 import com.dddeurope.niuz.website.TeaserDto;
 import com.dddeurope.niuz.newsroom.ArticleRepository;
@@ -35,7 +36,7 @@ public class TestFacade {
     }
 
     public void hire(String authorId, String authorName, String bankAccount, String contractType, int rate) {
-        authorService.hire(authorId, authorName, bankAccount, contractType, rate);
+        authorService.hire(new HireAuthor(authorId, authorName, contractType, rate, bankAccount));
     }
 
     public void submit(String articleId, String authorId, String headline) {
