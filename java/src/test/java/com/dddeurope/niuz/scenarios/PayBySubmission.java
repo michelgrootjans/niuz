@@ -2,6 +2,7 @@ package com.dddeurope.niuz.scenarios;
 
 import com.dddeurope.niuz.finance.PaymentDto;
 import com.dddeurope.niuz.hr.HireAuthor;
+import com.dddeurope.niuz.newsroom.PublishArticle;
 import com.dddeurope.niuz.newsroom.SubmitArticle;
 import com.dddeurope.niuz.website.TeaserDto;
 import com.dddeurope.niuz.fixtures.TestFacade;
@@ -33,7 +34,7 @@ public class PayBySubmission {
     void publishArticle() {
         app.dispatch(new HireAuthor("author-1", "Freddy Kruger", "pay-by-submission", 50, "123-4567-89"));
         app.dispatch(new SubmitArticle("article-1", "author-1", "headline"));
-        app.publish("article-1");
+        app.dispatch(new PublishArticle("article-1"));
 
         assertThat(app.get("homepage")).containsExactly(
                 new TeaserDto("headline", "Freddy Kruger")

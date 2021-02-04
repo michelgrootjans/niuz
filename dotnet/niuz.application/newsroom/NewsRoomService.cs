@@ -3,7 +3,7 @@ using niuz.application.events;
 
 namespace niuz.application.newsroom
 {
-    public class NewsRoomService : ICommandHandler<SubmitArticle>
+    public class NewsRoomService : ICommandHandler<SubmitArticle>, ICommandHandler<PublishArticle>
     {
         private readonly IAuthorRepository authors;
         private readonly IArticleRepository articles;
@@ -22,18 +22,18 @@ namespace niuz.application.newsroom
             authors.Save(new Author(@event.AuthorId, @event.AuthorName));
         }
 
-        public void Publish(string articleId)
-        {
-            var article = articles.GetByArticleId(articleId);
-            var author = authors.GetByAuthorId(article.AuthorId);
-
-            publisher.Publish(new ArticlePublished(author.Id, author.Name, article.Headline));
-        }
-
         public void Handle(SubmitArticle command)
         {
             articles.Save(new Article(command.ArticleId, command.AuthorId, command.Headline));
             publisher.Publish(new ArticleSubmitted(command.AuthorId, command.Headline));
+        }
+
+        public void Handle(PublishArticle command)
+        {
+            var article = articles.GetByArticleId(command.ArticleId);
+            var author = authors.GetByAuthorId(article.AuthorId);
+
+            publisher.Publish(new ArticlePublished(author.Id, author.Name, article.Headline));
         }
     }
 }

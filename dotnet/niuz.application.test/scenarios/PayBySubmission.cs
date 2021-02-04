@@ -34,7 +34,7 @@ namespace niuz.application.scenarios
         {
             app.Dispatch(new HireAuthor("author-1", "Freddy Kruger", "pay-by-submission", 50, "123-4567-89"));
             app.Dispatch(new SubmitArticle("article-1", "author-1", "headline"));
-            app.Publish("article-1");
+            app.Dispatch(new PublishArticle("article-1"));
 
             app.Get("homepage").Should().ContainInOrder(
                 new TeaserDto("headline", "Freddy Kruger")

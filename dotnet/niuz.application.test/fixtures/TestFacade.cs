@@ -9,36 +9,26 @@ namespace niuz.application.fixtures
 {
     public class TestFacade
     {
-        private readonly NewsRoomService newsRoomService;
         private readonly TeaserService teaserService;
         private readonly PaymentService paymentService;
         private readonly CommandDispatcher commandDispatcher;
 
         public TestFacade()
         {
-            var authors = new InMemoryAuthors();
-            var articles = new InMemoryArticles();
-            var teasers = new InMemoryTeasers();
-            var payments = new InMemoryPayments();
             var eventBus = new InMemoryEventBus();
 
-            newsRoomService = new NewsRoomService(authors, articles, eventBus, eventBus);
-            teaserService = new TeaserService(teasers, eventBus);
-            paymentService = new PaymentService(new InMemoryContracts(), payments, eventBus);
             commandDispatcher = new CommandDispatcher(
                 new AuthorService(eventBus),
-                newsRoomService
-                );
+                new NewsRoomService(new InMemoryAuthors(), new InMemoryArticles(), eventBus, eventBus)
+            );
+
+            paymentService = new PaymentService(new InMemoryContracts(), new InMemoryPayments(), eventBus);
+            teaserService = new TeaserService(new InMemoryTeasers(), eventBus);
         }
 
         public void Dispatch<T>(T command)
         {
             commandDispatcher.Dispatch(command);
-        }
-
-        public void Publish(string articleId)
-        {
-            newsRoomService.Publish(articleId);
         }
 
         public IEnumerable<TeaserDto> Get(string page)
