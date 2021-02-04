@@ -2,6 +2,7 @@ package com.dddeurope.niuz.scenarios;
 
 import com.dddeurope.niuz.finance.PaymentDto;
 import com.dddeurope.niuz.hr.HireAuthor;
+import com.dddeurope.niuz.newsroom.SubmitArticle;
 import com.dddeurope.niuz.website.TeaserDto;
 import com.dddeurope.niuz.fixtures.TestFacade;
 import org.junit.jupiter.api.BeforeEach;
@@ -20,7 +21,7 @@ public class PayByPublication {
     @Test
     void submitArticle() {
         app.dispatch(new HireAuthor("author-1", "Freddy Kruger", "pay-by-publication", 100, "123-4567-89"));
-        app.submit("article-1", "author-1", "headline");
+        app.dispatch(new SubmitArticle("article-1", "author-1", "headline"));
 
         assertThat(app.get("homepage")).isEmpty();
         assertThat(app.getByBankAccount("123-4567-89")).isEmpty();
@@ -29,7 +30,7 @@ public class PayByPublication {
     @Test
     void publishArticle() {
         app.dispatch(new HireAuthor("author-1", "Freddy Kruger", "pay-by-publication", 100, "123-4567-89"));
-        app.submit("article-1", "author-1", "headline");
+        app.dispatch(new SubmitArticle("article-1", "author-1", "headline"));
         app.publish("article-1");
 
         assertThat(app.get("homepage")).containsExactly(

@@ -5,8 +5,8 @@ import com.dddeurope.niuz.finance.ContractRepository;
 import com.dddeurope.niuz.finance.PaymentDto;
 import com.dddeurope.niuz.finance.PaymentService;
 import com.dddeurope.niuz.hr.AuthorService;
-import com.dddeurope.niuz.hr.HireAuthor;
 import com.dddeurope.niuz.newsroom.NewsroomService;
+import com.dddeurope.niuz.newsroom.SubmitArticle;
 import com.dddeurope.niuz.website.TeaserDto;
 import com.dddeurope.niuz.newsroom.ArticleRepository;
 import com.dddeurope.niuz.newsroom.AuthorRepository;
@@ -33,15 +33,14 @@ public class TestFacade {
         newsroomService = new NewsroomService(authors, articles, eventBus, eventBus);
         teaserService = new TeaserService(teasers, eventBus);
         paymentService = new PaymentService(contracts, payments, eventBus);
-        commandDispatcher = new CommandDispatcher(new AuthorService(eventBus));
+        commandDispatcher = new CommandDispatcher(
+                new AuthorService(eventBus),
+                new NewsroomService(authors, articles, eventBus, eventBus)
+        );
     }
 
     public void dispatch(Object command) {
         commandDispatcher.dispatch(command);
-    }
-
-    public void submit(String articleId, String authorId, String headline) {
-        newsroomService.submit(articleId, authorId, headline);
     }
 
     public void publish(String articleId) {

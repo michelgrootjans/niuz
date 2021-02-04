@@ -9,11 +9,10 @@ namespace niuz.application.fixtures
 {
     public class TestFacade
     {
-        private readonly AuthorService authorService;
         private readonly NewsRoomService newsRoomService;
         private readonly TeaserService teaserService;
         private readonly PaymentService paymentService;
-        private CommandDispatcher commandDispatcher;
+        private readonly CommandDispatcher commandDispatcher;
 
         public TestFacade()
         {
@@ -23,21 +22,18 @@ namespace niuz.application.fixtures
             var payments = new InMemoryPayments();
             var eventBus = new InMemoryEventBus();
 
-            authorService = new AuthorService(eventBus);
             newsRoomService = new NewsRoomService(authors, articles, eventBus, eventBus);
             teaserService = new TeaserService(teasers, eventBus);
             paymentService = new PaymentService(new InMemoryContracts(), payments, eventBus);
-            commandDispatcher = new CommandDispatcher(authorService);
+            commandDispatcher = new CommandDispatcher(
+                new AuthorService(eventBus),
+                newsRoomService
+                );
         }
 
         public void Dispatch<T>(T command)
         {
             commandDispatcher.Dispatch(command);
-        }
-
-        public void Submit(string articleId, string authorId, string headline)
-        {
-            newsRoomService.Submit(articleId, authorId, headline);
         }
 
         public void Publish(string articleId)

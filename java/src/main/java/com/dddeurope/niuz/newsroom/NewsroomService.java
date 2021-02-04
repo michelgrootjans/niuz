@@ -1,8 +1,9 @@
 package com.dddeurope.niuz.newsroom;
 
+import com.dddeurope.niuz.commands.CommandHandler;
 import com.dddeurope.niuz.events.*;
 
-public class NewsroomService {
+public class NewsroomService implements CommandHandler<SubmitArticle> {
     private final AuthorRepository authors;
     private final ArticleRepository articles;
     private final EventPublisher publisher;
@@ -18,9 +19,15 @@ public class NewsroomService {
         authors.save(new Author(event.getAuthorId(), event.getAuthorName()));
     }
 
-    public void submit(String articleId, String authorId, String headline) {
-        articles.save(new Article(articleId, authorId, headline));
-        publisher.publish(new ArticleSubmitted(authorId, headline));
+    @Override
+    public boolean canHandle(Object command) {
+        return command instanceof SubmitArticle;
+    }
+
+    @Override
+    public void handle(SubmitArticle command) {
+        articles.save(new Article(command.getArticleId(), command.getAuthorId(), command.getHeadline()));
+        publisher.publish(new ArticleSubmitted(command.getAuthorId(), command.getHeadline()));
     }
 
     public void publish(String articleId) {

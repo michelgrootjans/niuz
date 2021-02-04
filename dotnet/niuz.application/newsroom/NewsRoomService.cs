@@ -1,8 +1,9 @@
+using niuz.application.commands;
 using niuz.application.events;
 
 namespace niuz.application.newsroom
 {
-    public class NewsRoomService
+    public class NewsRoomService : ICommandHandler<SubmitArticle>
     {
         private readonly IAuthorRepository authors;
         private readonly IArticleRepository articles;
@@ -21,18 +22,18 @@ namespace niuz.application.newsroom
             authors.Save(new Author(@event.AuthorId, @event.AuthorName));
         }
 
-        public void Submit(string articleId, string authorId, string headline)
-        {
-            articles.Save(new Article(articleId, authorId, headline));
-            publisher.Publish(new ArticleSubmitted(authorId, headline));
-        }
-
         public void Publish(string articleId)
         {
             var article = articles.GetByArticleId(articleId);
             var author = authors.GetByAuthorId(article.AuthorId);
 
             publisher.Publish(new ArticlePublished(author.Id, author.Name, article.Headline));
+        }
+
+        public void Handle(SubmitArticle command)
+        {
+            articles.Save(new Article(command.ArticleId, command.AuthorId, command.Headline));
+            publisher.Publish(new ArticleSubmitted(command.AuthorId, command.Headline));
         }
     }
 }
