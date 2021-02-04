@@ -13,7 +13,8 @@ namespace niuz.application.hr
 
         public void Hire(string authorId, string authorName, string bankAccount, string contractType, int rate)
         {
-            publisher.Publish(new ContractSigned(authorId, authorName, contractType, rate, bankAccount));
+            var command = new HireAuthor(authorId, authorName, contractType, rate, bankAccount);
+            publisher.Publish(new ContractSigned(command.AuthorId, command.AuthorName, command.ContractType, command.Rate, command.BankAccount));
         }
     }
 }

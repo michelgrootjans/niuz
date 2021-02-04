@@ -11,6 +11,7 @@ public class AuthorService {
     }
 
     public void hire(String authorId, String authorName, String bankAccount, String contractType, int rate) {
-        publisher.publish(new ContractSigned(authorId, contractType, rate, bankAccount, authorName));
+        HireAuthor command = new HireAuthor(authorId, authorName, contractType, rate, bankAccount);
+        publisher.publish(new ContractSigned(command.getAuthorId(), command.getContractType(), command.getRate(), command.getBankAccount(), command.getAuthorName()));
     }
 }
