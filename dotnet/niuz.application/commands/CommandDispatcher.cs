@@ -1,19 +1,23 @@
-using niuz.application.hr;
+using System.Linq;
 
 namespace niuz.application.commands
 {
     public class CommandDispatcher
     {
-        private readonly AuthorService authorService;
+        private readonly object[] handlers;
 
-        public CommandDispatcher(AuthorService authorService)
+        public CommandDispatcher(params object[] handlers)
         {
-            this.authorService = authorService;
+            this.handlers = handlers;
         }
 
-        public void Dispatch(HireAuthor hireAuthor)
+        public void Dispatch<T>(T command)
         {
-            authorService.Hire(hireAuthor);
+            handlers
+                .OfType<ICommandHandler<T>>()
+                .First()
+                .Handle(command);
+            
         }
     }
 }

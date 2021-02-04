@@ -1,16 +1,20 @@
 package com.dddeurope.niuz.commands;
 
-import com.dddeurope.niuz.hr.AuthorService;
 import com.dddeurope.niuz.hr.HireAuthor;
 
-public class CommandDispatcher {
-    private final AuthorService authorService;
+import java.util.Arrays;
+import java.util.List;
 
-    public CommandDispatcher(AuthorService authorService) {
-        this.authorService = authorService;
+public class CommandDispatcher {
+    private final List<CommandHandler> handlers;
+
+    public CommandDispatcher(CommandHandler<HireAuthor>... handlers) {
+        this.handlers = Arrays.asList(handlers);
     }
 
-    public void dispatch(HireAuthor hireAuthor) {
-        authorService.hire(hireAuthor);
+    public void dispatch(HireAuthor command) {
+        handlers.stream()
+                .filter(handler -> handler.canHandle(command))
+                .forEach(handler -> handler.handle(command));
     }
 }

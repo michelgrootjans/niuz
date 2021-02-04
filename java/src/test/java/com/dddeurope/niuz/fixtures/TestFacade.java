@@ -17,10 +17,10 @@ import com.dddeurope.niuz.website.TeaserService;
 import java.util.List;
 
 public class TestFacade {
-    private final AuthorService authorService;
     private final NewsroomService newsroomService;
     private final TeaserService teaserService;
     private final PaymentService paymentService;
+    private final CommandDispatcher commandDispatcher;
 
     public TestFacade() {
         AuthorRepository authors = new InMemoryAuthors();
@@ -30,14 +30,14 @@ public class TestFacade {
         ContractRepository contracts = new InMemoryContractRepository();
         InMemoryEventBus eventBus = new InMemoryEventBus();
 
-        authorService = new AuthorService(eventBus);
         newsroomService = new NewsroomService(authors, articles, eventBus, eventBus);
         teaserService = new TeaserService(teasers, eventBus);
         paymentService = new PaymentService(contracts, payments, eventBus);
+        commandDispatcher = new CommandDispatcher(new AuthorService(eventBus));
     }
 
     public void hire(String authorId, String authorName, String bankAccount, String contractType, int rate) {
-        new CommandDispatcher(authorService).dispatch(new HireAuthor(authorId, authorName, contractType, rate, bankAccount));
+        commandDispatcher.dispatch(new HireAuthor(authorId, authorName, contractType, rate, bankAccount));
     }
 
     public void submit(String articleId, String authorId, String headline) {

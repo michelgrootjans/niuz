@@ -1,8 +1,9 @@
+using niuz.application.commands;
 using niuz.application.events;
 
 namespace niuz.application.hr
 {
-    public class AuthorService
+    public class AuthorService : ICommandHandler<HireAuthor>
     {
         private readonly IEventPublisher publisher;
 
@@ -14,6 +15,11 @@ namespace niuz.application.hr
         public void Hire(HireAuthor command)
         {
             publisher.Publish(new ContractSigned(command.AuthorId, command.AuthorName, command.ContractType, command.Rate, command.BankAccount));
+        }
+
+        public void Handle(HireAuthor command)
+        {
+            Hire(command);
         }
     }
 }

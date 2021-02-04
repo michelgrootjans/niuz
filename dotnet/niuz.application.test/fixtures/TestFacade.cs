@@ -13,6 +13,7 @@ namespace niuz.application.fixtures
         private readonly NewsRoomService newsRoomService;
         private readonly TeaserService teaserService;
         private readonly PaymentService paymentService;
+        private CommandDispatcher commandDispatcher;
 
         public TestFacade()
         {
@@ -26,11 +27,12 @@ namespace niuz.application.fixtures
             newsRoomService = new NewsRoomService(authors, articles, eventBus, eventBus);
             teaserService = new TeaserService(teasers, eventBus);
             paymentService = new PaymentService(new InMemoryContracts(), payments, eventBus);
+            commandDispatcher = new CommandDispatcher(authorService);
         }
 
         public void Hire(string authorId, string authorName, string bankAccount, string contractType, int rate)
         {
-            new CommandDispatcher(authorService).Dispatch(new HireAuthor(authorId, authorName, contractType, rate, bankAccount));
+            commandDispatcher.Dispatch(new HireAuthor(authorId, authorName, contractType, rate, bankAccount));
         }
 
         public void Submit(string articleId, string authorId, string headline)
