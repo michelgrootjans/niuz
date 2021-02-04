@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using niuz.application.commands;
 using niuz.application.finance;
 using niuz.application.hr;
 using niuz.application.newsroom;
@@ -29,7 +30,7 @@ namespace niuz.application.fixtures
 
         public void Hire(string authorId, string authorName, string bankAccount, string contractType, int rate)
         {
-            authorService.Hire(new HireAuthor(authorId, authorName, contractType, rate, bankAccount));
+            new CommandDispatcher(authorService).Dispatch(new HireAuthor(authorId, authorName, contractType, rate, bankAccount));
         }
 
         public void Submit(string articleId, string authorId, string headline)

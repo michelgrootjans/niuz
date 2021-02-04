@@ -1,5 +1,6 @@
 package com.dddeurope.niuz.fixtures;
 
+import com.dddeurope.niuz.commands.CommandDispatcher;
 import com.dddeurope.niuz.finance.ContractRepository;
 import com.dddeurope.niuz.finance.PaymentDto;
 import com.dddeurope.niuz.finance.PaymentService;
@@ -36,7 +37,7 @@ public class TestFacade {
     }
 
     public void hire(String authorId, String authorName, String bankAccount, String contractType, int rate) {
-        authorService.hire(new HireAuthor(authorId, authorName, contractType, rate, bankAccount));
+        new CommandDispatcher(authorService).dispatch(new HireAuthor(authorId, authorName, contractType, rate, bankAccount));
     }
 
     public void submit(String articleId, String authorId, String headline) {
